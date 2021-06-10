@@ -61,9 +61,3 @@ char	*conv_from_dec(int n, int sys)
 		res[0] = '-';
 	return (res);
 }
-
-int main(void)
-{
-	printf("%s\n", conv_from_dec(-1120, 8));
-	return (0);
-}
