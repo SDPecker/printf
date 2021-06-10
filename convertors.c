@@ -9,7 +9,7 @@ int		power(int n, int p)
 
 	i = 0;
 	r = 1;
-	while(i < n)
+	while(i < p)
 	{
 		r *= n;
 		i++;
@@ -17,11 +17,20 @@ int		power(int n, int p)
 	return (r);
 }
 
+int		abs(int n)
+{
+	if (n < 0)
+		return (-1 * n);
+	return (n);
+}
+
 int		count_digits(int n, int sys)
 {
 	int r;
 	r = 1;
-	while (n / power(sys, r) > 0)
+	while (abs(n) / power(sys, r) != 0)
+		r++;
+	if (n < 0)
 		r++;
 	return (r);
 }
@@ -41,18 +50,20 @@ char	*conv_from_dec(int n, int sys)
 	
 	i = count_digits(n, sys);
 	res = (char *)malloc(i + 1);
-	temp = n;
+	temp = abs(n);
 	res[i] = 0;
 	while (--i >= 0)
 	{
 		res[i] = num_to_ch(temp % sys);
 		temp /= sys;
 	}
+	if (n < 0)
+		res[0] = '-';
 	return (res);
 }
 
 int main(void)
 {
-	printf("%c\n", num_to_ch(110));
+	printf("%s\n", conv_from_dec(-1120, 8));
 	return (0);
 }
