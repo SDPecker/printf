@@ -1,32 +1,30 @@
-//#include "ft_printf.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		power(int n, int p)
+int	power(int n, int p)
 {
 	int	i;
-	int r;
+	int	r;
 
 	i = 0;
 	r = 1;
-	while(i < p)
+	while (i++ < p)
 	{
 		r *= n;
-		i++;
 	}
 	return (r);
 }
 
-int		abs(int n)
+int	abs(int n)
 {
 	if (n < 0)
 		return (-1 * n);
 	return (n);
 }
 
-int		count_digits(int n, int sys)
+int	count_digits(int n, int sys)
 {
-	int r;
+	int	r;
+
 	r = 1;
 	while (abs(n) / power(sys, r) != 0)
 		r++;
@@ -47,7 +45,7 @@ char	*conv_from_dec(int n, int sys)
 	char	*res;
 	int		i;
 	int		temp;
-	
+
 	i = count_digits(n, sys);
 	res = (char *)malloc(i + 1);
 	temp = abs(n);
