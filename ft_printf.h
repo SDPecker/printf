@@ -1,4 +1,5 @@
-#define FLAGS ".-0*"
 #include <stdlib.h>
 #include <stdarg.h>
-#include "libft.a"
+
+char	*conv_from_dec(int n, int sys);
+int		ft_printf(const char *format, ...);

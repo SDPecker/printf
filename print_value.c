@@ -1,14 +1,23 @@
-#include "libft.h"
+#include "../libft/libft.h"
+#include "ft_printf.h"
+void    ft_putstr(char *str)
+{
+    int i;
 
-void	print_int(int value, int width, char format)
+    while (str[i])
+    {
+        int i;
+        
+        while (str[i])
+            write(1, &str[i++], 1);
+    }
+}
+
+void    print_integer(int   value, int base)
 {
     char    *output;
 
-    if (format == 'd' )
-        output = conv_from_dec(value, 10);
-    else if (format == 'o')
-        output = conv_from_dec((unsigned int)value, 10);
-    else
-        output = (char *)malloc()
-    
+    output = conv_from_dec(value, base);
+    ft_putstr(output);
+    free(output);
 }
