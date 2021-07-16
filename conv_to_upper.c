@@ -20,7 +20,7 @@ char	*conv_to_upper(char *line)
 	while (line[i])
 	{
 		if (line[i] >= 'a' && line[i] <= 'z')
-			res[i] = line[i] + 32;
+			res[i] = line[i] - 32;
 		else
 			res[i] = line[i];
 		i++;
