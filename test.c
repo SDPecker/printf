@@ -5,7 +5,8 @@ int main(void)
 {
     void *t = malloc(1);
     unsigned int i = -2;
-    ft_printf("test %i\n", -5);
+    ft_printf("test %x\n", -25);
+    printf("test %x\n", -25);
     return(0);
     free(t);
 }

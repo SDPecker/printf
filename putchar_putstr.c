@@ -16,5 +16,5 @@ int	ft_putstr(char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
-    return (i);
+	return (i);
 }

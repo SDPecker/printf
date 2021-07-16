@@ -1,7 +1,5 @@
 #include "ft_printf.h"
 
-
-
 int     print_integer(int value)
 {
 	int		r;
@@ -22,21 +20,25 @@ int     print_integer(int value)
     return (r);
 }
 
-int		print_unsigned(unsigned int value, int base)
+int		print_unsigned(unsigned int value, int base, char c)
 {
-	char    *output;
-    int     r;
+	char			*output;
+    int				r;
+	unsigned int	t;
 
-    output = conv_from_dec(value, base);
+	t = (unsigned int)value;
+    output = conv_from_dec(t, base);
+	if (c == 'u')
+		output = conv_to_upper(output);
     ft_putstr(output);
     r = ft_strlen(output);
     free(output);
     return (r);
 }
 
-int     print_variable(char format, va_list args)
+int		print_variable(char format, va_list args)
 {
-    int r;
+    int	r;
 
     r = 0;
     if (format == '%')
@@ -46,14 +48,14 @@ int     print_variable(char format, va_list args)
 	else if (format == 's')
 		r += ft_putstr(va_arg(args, char*));
 	else if (format == 'p')
-		r += print_unsigned(va_arg(args, unsigned int), 16);
+		r += print_unsigned(va_arg(args, unsigned int), 16, 'l');
 	else if (format == 'i' || format == 'd')
 		r += print_integer(va_arg(args, int));
 	else if (format == 'u')
-		r += print_unsigned(va_arg(args, unsigned int), 10);
+		r += print_unsigned(va_arg(args, unsigned int), 10, 'l');
 	else if (format == 'x')
-		r += print_unsigned(va_arg(args, int), 16);
+		r += print_unsigned(va_arg(args, unsigned int), 16, 'l');
 	else if (format == 'X')
-		r += ft_putstr(conv_to_upper(conv_from_dec(va_arg(args, unsigned int), 16)));
-    return (r);
+		r += print_unsigned(va_arg(args, unsigned int), 16, 'u');
+	return (r);
 }

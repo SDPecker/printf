@@ -21,7 +21,7 @@ int	ft_abs(int n)
 	return (n);
 }
 
-int	count_digits(long long int n, int sys)
+int	count_digits(long int n, int sys)
 {
 	int	r;
 
@@ -42,11 +42,12 @@ char	num_to_ch(int n)
 
 char	*conv_from_dec(unsigned int n, int sys)
 {
-	char	*res;
-	int		i;
-	int		temp;
+	char			*res;
+	int				i;
+	unsigned int	temp;
 
-	i = count_digits(n, sys);
+	i = count_digits_u(n, sys);
+	printf("%i\n", i);
 	res = (char *)malloc(i + 1);
 	temp = n;
 	res[i] = 0;
