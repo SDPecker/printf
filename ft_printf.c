@@ -8,6 +8,7 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	i = 0;
+	r = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -20,10 +21,7 @@ int	ft_printf(const char *format, ...)
 			}
 		}
 		else
-		{
-			ft_putchar(format[i++]);
-			r++;
-		}
+			r += ft_putchar(format[i++]);
 	}
 	va_end(args);
 	return (r);
