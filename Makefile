@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-SOURCES = convertors.c extra_maths.c putchar_putstr.c conv_to_upper.c count_digits.c ft_printf.c print_value.c
+SOURCES = convertors.c extra_maths.c putchar_putstr.c count_digits.c ft_printf.c print_value.c num_to_ch.c
 OBJ = $(SOURCES:.c=.o)
 INCLUDES = ft_printf.h
 

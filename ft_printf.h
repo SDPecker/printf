@@ -19,5 +19,8 @@ int		count_digits_u(unsigned int n, int sys);
 int		power(int n, int p);
 int		count_digits_lu(long unsigned int n, int sys);
 char	*conv_from_dec_long(long unsigned int n, int sys);
+char	num_to_ch_upper(int n);
+char	num_to_ch(int n);
+char	*conv_from_dec_upper(unsigned int n, int sys);
 
 #endif

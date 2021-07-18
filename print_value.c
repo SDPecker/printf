@@ -28,16 +28,17 @@ int	print_unsigned(unsigned int value, int base, char c)
 	unsigned int	t;
 
 	t = value;
-	output = conv_from_dec(t, base);
 	if (c == 'u')
-		output = conv_to_upper(output);
+		output = conv_from_dec_upper(t, base);
+	else
+		output = conv_from_dec(t, base);
 	ft_putstr(output);
 	r = ft_strlen(output);
 	free(output);
 	return (r);
 }
 
-int	print_ptr(long unsigned int value, int base, char c)
+int	print_ptr(long unsigned int value, int base)
 {
 	char				*output;
 	int					r;
@@ -45,8 +46,6 @@ int	print_ptr(long unsigned int value, int base, char c)
 
 	t = value;
 	output = conv_from_dec_long(t, base);
-	if (c == 'u')
-		output = conv_to_upper(output);
 	ft_putstr("0x");
 	ft_putstr(output);
 	r = ft_strlen(output) + 2;
@@ -66,7 +65,7 @@ int	print_variable(char format, va_list args)
 	else if (format == 's')
 		r += ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
-		r += print_ptr(va_arg(args, long unsigned int), 16, 'l');
+		r += print_ptr(va_arg(args, long unsigned int), 16);
 	else if (format == 'i' || format == 'd')
 		r += print_integer(va_arg(args, int));
 	else if (format == 'u')

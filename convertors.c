@@ -1,12 +1,5 @@
 #include "ft_printf.h"
 
-char	num_to_ch(int n)
-{
-	if (n >= 0 && n <= 15)
-		return ("0123456789abcdef"[n]);
-	return ('!');
-}
-
 char	*conv_from_dec(unsigned int n, int sys)
 {
 	char			*res;
@@ -20,6 +13,24 @@ char	*conv_from_dec(unsigned int n, int sys)
 	while (--i >= 0)
 	{
 		res[i] = num_to_ch(temp % sys);
+		temp /= sys;
+	}
+	return (res);
+}
+
+char	*conv_from_dec_upper(unsigned int n, int sys)
+{
+	char			*res;
+	int				i;
+	unsigned int	temp;
+
+	i = count_digits_u(n, sys);
+	res = (char *)malloc(i + 1);
+	temp = n;
+	res[i] = 0;
+	while (--i >= 0)
+	{
+		res[i] = num_to_ch_upper(temp % sys);
 		temp /= sys;
 	}
 	return (res);
